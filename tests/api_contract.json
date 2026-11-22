@@ -1,0 +1,12 @@
+{
+  "purpose": "Reviewed public API contract for flowpipeline.",
+  "exports": [],
+  "signatures": {
+    "AsyncStream": {
+      "methods": {
+        "batch_within": "(self, max_items: 'int', max_delay: 'float', *, partial: 'bool' = True) -> 'AsyncStream[tuple[T, ...]]'"
+      },
+      "$call": "(source: 'AsyncIterable[T]', *, _upstream: 'AsyncStream[Any] | None' = None) -> 'None'"
+    }
+  }
+}
