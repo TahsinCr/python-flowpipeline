@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flowpipeline"
+version = "0.1.0"
+description = "FlowPipeline: synchronous and asynchronous data pipelines and streams."
+readme = { file = "README.md", content-type = "text/markdown" }
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "TahsinCr", email = "Tahsincr@outlook.com" }]
+
+[project.urls]
+Repository = "https://github.com/TahsinCr/python-flowpipeline"
+Changelog = "https://github.com/TahsinCr/python-flowpipeline/blob/main/CHANGELOG.md"
+Issues = "https://github.com/TahsinCr/python-flowpipeline/issues"
+
+[project.optional-dependencies]
+dev = [
+  "pyperf>=2.7,<3",
+  "pyright>=1.1.400,<2",
+  "ruff>=0.12,<1",
+]
+
+[tool.setuptools]
+packages = ["flowpipeline"]
+
+[tool.setuptools.package-data]
+flowpipeline = ["py.typed"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+exclude = [".git", ".serena", "build", "dist"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "B", "ASYNC", "I", "UP", "RUF100"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["B023"]
+
+[tool.pyright]
+pythonVersion = "3.10"
+typeCheckingMode = "basic"
+include = ["flowpipeline"]
+exclude = ["tests"]

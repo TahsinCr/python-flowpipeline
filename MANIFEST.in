@@ -1,0 +1,6 @@
+include LICENSE README.md README-TR.md CHANGELOG.md pyproject.toml run_tests.py
+include flowpipeline/py.typed
+recursive-include tests *.py *.json
+recursive-include benchmarks *.py
+prune benchmarks/results
+global-exclude *.py[cod] *.so *.pyd *.dll *.dylib *.gcno *.gcda

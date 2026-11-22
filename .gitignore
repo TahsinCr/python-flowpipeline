@@ -1,0 +1,21 @@
+# Python environments, caches, and distributions
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.hypothesis/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Local development tools
+.serena/
+.idea/
+.vscode/
+*.swp
+*~
