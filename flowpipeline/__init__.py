@@ -12,7 +12,10 @@ from .observability import (
 from .stream import AsyncStream
 from .sync import Pipeline
 
+__version__ = "1.0.0"
+
 __all__ = [
+    "__version__",
     "AsyncPipeline",
     "AsyncStream",
     "ExecutionMetrics",
