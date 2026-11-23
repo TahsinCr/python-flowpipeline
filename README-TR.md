@@ -2,6 +2,7 @@
 [![PyPI sürümü][pypi-shield]][pypi]
 [![Python 3.10+][python-shield]][python]
 [![MIT Lisansı][license-shield]][license]
+<br>
 [English][readme-en] | **Türkçe**
 
 # FlowPipeline
