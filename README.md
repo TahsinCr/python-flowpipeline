@@ -11,6 +11,8 @@
 
 Composable processing stages and async streams for Python applications. Define a sequence of transformations and run it synchronously or asynchronously.
 
+> [English documentation](docs/en/README.md) covers architecture choices, stage ordering, middleware rules, `AsyncStream` backpressure, and the API reference. Also available in [Türkçe](docs/tr/README.md).
+
 ## Contents
 
 - [Getting started](#getting-started)

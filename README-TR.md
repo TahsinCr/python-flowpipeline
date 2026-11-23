@@ -11,6 +11,8 @@
 
 Python uygulamaları için birleştirilebilir işleme aşamaları ve asenkron akışlar. Dönüşümleri sıraya koyup senkron veya asenkron çalıştırabilirsiniz.
 
+> [Türkçe belgeler](docs/tr/README.md) mimari tercihleri, aşama sıralamayı, middleware kurallarını, `AsyncStream` geri basıncını ve API başvurusunu kapsar. [English documentation](docs/en/README.md) bağlantısı da mevcuttur.
+
 ## İçindekiler
 
 - [Başlangıç](#getting-started)
