@@ -11,7 +11,7 @@
 
 Python uygulamaları için birleştirilebilir işleme aşamaları ve asenkron akışlar. Dönüşümleri sıraya koyup senkron veya asenkron çalıştırabilirsiniz.
 
-> [Türkçe belgeler](docs/tr/README.md) mimari tercihleri, aşama sıralamayı, middleware kurallarını, `AsyncStream` geri basıncını ve API başvurusunu kapsar. [English documentation](docs/en/README.md) bağlantısı da mevcuttur.
+> [Türkçe belgeler][docs-tr] mimari tercihleri, aşama sıralamayı, middleware kurallarını, `AsyncStream` geri basıncını ve API başvurusunu kapsar. [English documentation][docs-en] bağlantısı da mevcuttur.
 
 ## İçindekiler
 
@@ -147,3 +147,5 @@ Proje [MIT Lisansı][license] ile yayımlanır.
 [license]: https://github.com/TahsinCr/python-flowpipeline/blob/main/LICENSE
 [repo-flowevent]: https://github.com/TahsinCr/python-flowevent
 [repo-flowcoord]: https://github.com/TahsinCr/python-flowcoord
+[docs-en]: https://github.com/TahsinCr/python-flowpipeline/blob/main/docs/en/README.md
+[docs-tr]: https://github.com/TahsinCr/python-flowpipeline/blob/main/docs/tr/README.md

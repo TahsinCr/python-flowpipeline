@@ -12,8 +12,8 @@ This guide covers `AsyncStream`'s lazy pull model, operator fusion, backpressure
 - [Lazy Pull Model and Operator Fusion](#lazy-pull-model-and-operator-fusion)
 - [Operators and Engineering Trade-Offs](#operators-and-engineering-trade-offs)
   - [`map` and `filter`](#map-and-filter)
-  - [`batch(size, partial=True)`](#batchsize-partialtrue)
-  - [`batch_within(max_items, max_delay, partial=True)`](#batch_withinmax_items-max_delay-partialtrue)
+  - [`batch(size, *, partial=True)`](#batchsize--partialtrue)
+  - [`batch_within(max_items, max_delay, *, partial=True)`](#batch_withinmax_items-max_delay--partialtrue)
   - [`buffer(capacity)` — When It Helps vs When It Hurts](#buffercapacity--when-it-helps-vs-when-it-hurts)
 - [Single-Consumer Ownership and Lifecycle (`async with`)](#single-consumer-ownership-and-lifecycle-async-with)
 - [Error Propagation and Cleanup Ordering](#error-propagation-and-cleanup-ordering)
@@ -54,14 +54,14 @@ flowchart LR
 ### `map` and `filter`
 
 - Zero background tasks; executed sequentially inside the consumer's read step.
-- Synchronous transformations returning basic non-awaitable types (`int`, `bool`, `str`, `None`, etc.) skip generic awaitable inspection on the hot path.
+- The fast path skips generic awaitable inspection for exact `int` and `bool` results. Other results are checked normally.
 
-### `batch(size, partial=True)`
+### `batch(size, *, partial=True)`
 
 - Accumulates up to `size` items into a `tuple` with zero background tasks.
 - `partial` controls whether any remaining shorter tuple is yielded when the source completes (`True` by default).
 
-### `batch_within(max_items, max_delay, partial=True)`
+### `batch_within(max_items, max_delay, *, partial=True)`
 
 Designed for workflows like bulk database writes where you want full batches under load without stalling indefinitely when traffic trickles in:
 

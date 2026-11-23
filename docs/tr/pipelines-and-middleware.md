@@ -119,9 +119,9 @@ except PipelineExecutionError as err:
 
 ## Gözlemlenebilirlik (`PipelineStats` ve Özel Observer)
 
-`Pipeline` ve `AsyncPipeline` varsayılan olarak sıfır ölçüm maliyetiyle çalışır. Ölçüm almak için kurucuya `observer=PipelineStats()` veya kendi senkron `PipelineObserver` fonksiyonunu verebilirsin.
+Pipeline süre ölçümü varsayılan olarak kapalıdır. Ölçüm gerektiğinde `observer=PipelineStats()` ya da kendi senkron `PipelineObserver` fonksiyonunu ver.
 
-- **Neden `AsyncPipeline` bile senkron `observer` ister?** Metrik sayaçlarını artırmak bellek içi nanosaniyelik bir iştir. Gözlemci fonksiyonunun `async def` olması her aşama ve ara yazılımda event loop'a geri bırakma (`await`) maliyeti doğururdu; bu yüzden kütüphane observer'ın senkron olmasını zorunlu kılar.
+- Gözlemciler çağıran thread veya event loop üzerinde çalışır. Gözlemciyi kısa tut ve bloke eden loglama veya I/O işlerini başka yerde yap.
 - `PipelineStats` thread güvenlidir. `stats.snapshot` özelliği o anın değişmez bir `PipelineStatsSnapshot` kopyasını döndürür (`stages` ve `middleware` salt-okunur `MappingProxyType`'tır); sonradan gelen `run()` çağrıları veya `stats.reset()` alınmış bir snapshot'ı değiştirmez.
 - İstersen `correlation_provider` (ör. `flowevent.current_correlation_id`) vererek her `PipelineObservation` nesnesine otomatik `correlation_id` eklenmesini sağlayabilirsin.
 

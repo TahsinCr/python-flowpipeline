@@ -119,9 +119,9 @@ except PipelineExecutionError as err:
 
 ## Observability (`PipelineStats` and Custom Observers)
 
-`Pipeline` and `AsyncPipeline` have zero timing overhead by default. Attach `observer=PipelineStats()` or a custom synchronous `PipelineObserver` when metrics are needed.
+Pipeline timing is disabled by default. Attach `observer=PipelineStats()` or a custom synchronous `PipelineObserver` when you need measurements.
 
-- **Why is `observer` required to be synchronous even on `AsyncPipeline`?** Recording in-memory counters takes nanoseconds; forcing an `await` on every stage and middleware would schedule extra event-loop yields on every step.
+- Observers run inline on the caller’s thread or event loop. Keep them short, and move blocking logging or I/O out of the observer.
 - `PipelineStats` is thread-safe. Reading `stats.snapshot` returns an immutable `PipelineStatsSnapshot` (`stages` and `middleware` are read-only `MappingProxyType` views), isolated from subsequent runs or `stats.reset()`.
 - Pass `correlation_provider` (for example `flowevent.current_correlation_id`) to automatically populate `PipelineObservation.correlation_id`.
 

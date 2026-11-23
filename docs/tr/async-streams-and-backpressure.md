@@ -12,8 +12,8 @@ Bu rehber `AsyncStream` sınıfının tembel (lazy pull) modelini, operatörleri
 - [Tembel Çekme (Lazy Pull) Modeli ve Operatör Birleştirme](#tembel-çekme-lazy-pull-modeli-ve-operatör-birleştirme)
 - [Operatörler ve Mühendislik Takasları](#operatörler-ve-mühendislik-takasları)
   - [`map` ve `filter`](#map-ve-filter)
-  - [`batch(size, partial=True)`](#batchsize-partialtrue)
-  - [`batch_within(max_items, max_delay, partial=True)`](#batch_withinmax_items-max_delay-partialtrue)
+  - [`batch(size, *, partial=True)`](#batchsize--partialtrue)
+  - [`batch_within(max_items, max_delay, *, partial=True)`](#batch_withinmax_items-max_delay--partialtrue)
   - [`buffer(capacity)` — Ne Zaman Kazandırır, Ne Zaman Yavaşlatır?](#buffercapacity--ne-zaman-kazandırır-ne-zaman-yavaşlatır)
 - [Tek-Tüketici Sahipliği ve Yaşam Döngüsü (`async with`)](#tek-tüketici-sahipliği-ve-yaşam-döngüsü-async-with)
 - [Üretici Hataları ve Temizlik Sırası](#üretici-hataları-ve-temizlik-sırası)
@@ -54,14 +54,14 @@ flowchart LR
 ### `map` ve `filter`
 
 - Görev (task) oluşturmaz, doğrudan okuyan görevin içinde sırayla çalışır.
-- Senkron primitif döndüren (`int`, `bool`, `str`, `None` vb.) basit dönüşümlerde genel awaitable denetimi atlandığı için saf hız yüksektir.
+- Hızlı yol, tam `int` ve `bool` sonuçları için awaitable denetimini atlar. Diğer sonuçlar normal biçimde denetlenir.
 
-### `batch(size, partial=True)`
+### `batch(size, *, partial=True)`
 
 - En fazla `size` öğe biriktirip `tuple` olarak verir; görev oluşturmaz.
 - Kaynak bittiğinde elde kalan eksik grubun üretilip üretilmeyeceğini `partial` belirler (`True` varsayılan).
 
-### `batch_within(max_items, max_delay, partial=True)`
+### `batch_within(max_items, max_delay, *, partial=True)`
 
 Veritabanına toplu yazma (bulk insert) gibi işlerde hem **"en az N öğe biriksin"** hem de **"akış yavaşsa sonsuza kadar beklemeyelim, ilk öğeden itibaren en fazla `T` saniye sonra eldekini verelim"** ihtiyacını karşılar:
 

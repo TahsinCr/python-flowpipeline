@@ -11,7 +11,7 @@
 
 Composable processing stages and async streams for Python applications. Define a sequence of transformations and run it synchronously or asynchronously.
 
-> [English documentation](docs/en/README.md) covers architecture choices, stage ordering, middleware rules, `AsyncStream` backpressure, and the API reference. Also available in [Türkçe](docs/tr/README.md).
+> [English documentation][docs-en] covers architecture choices, stage ordering, middleware rules, `AsyncStream` backpressure, and the API reference. Also available in [Türkçe][docs-tr].
 
 ## Contents
 
@@ -147,3 +147,5 @@ This project is licensed under the [MIT License][license].
 [license]: https://github.com/TahsinCr/python-flowpipeline/blob/main/LICENSE
 [repo-flowevent]: https://github.com/TahsinCr/python-flowevent
 [repo-flowcoord]: https://github.com/TahsinCr/python-flowcoord
+[docs-en]: https://github.com/TahsinCr/python-flowpipeline/blob/main/docs/en/README.md
+[docs-tr]: https://github.com/TahsinCr/python-flowpipeline/blob/main/docs/tr/README.md

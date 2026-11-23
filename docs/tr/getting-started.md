@@ -15,8 +15,8 @@ Bu rehber `flowpipeline` kurulumunu, kütüphanenin hangi gerçek mühendislik p
   - [Derlenmiş Değişmez Plan (Snapshot Compilation)](#derlenmiş-değişmez-plan-snapshot-compilation)
   - [Senkron ve Asenkron Ayrımı](#senkron-ve-asenkron-ayrımı)
   - [Ne Zaman Kullanmamalısın?](#ne-zaman-kullanmamalısın)
-- [İlk Senkron Pipeline Örneği](#ilk-senkron-pipeline-örneği)
-- [İlk Asenkron Pipeline + Stream Örneği](#ilk-asenkron-pipeline--stream-örneği)
+- [İlk Senkron Pipeline Örneği](#i%CC%87lk-senkron-pipeline-örneği)
+- [İlk Asenkron Pipeline + Stream Örneği](#i%CC%87lk-asenkron-pipeline--stream-örneği)
 
 ---
 
