@@ -1,7 +1,7 @@
 import asyncio
 import unittest
 from types import SimpleNamespace
-from unittest.mock import Mock, patch
+from unittest.mock import AsyncMock, Mock, patch
 
 from flowpipeline.stream import AsyncStream
 
@@ -43,6 +43,23 @@ class StreamTests(unittest.IsolatedAsyncioTestCase):
             stream.__aiter__()
         stream = AsyncStream(numbers()).map(lambda value: value + 1).filter(lambda value: value > 1)
         self.assertEqual([item async for item in stream.batch(3, partial=False)], [(2, 3, 4)])
+
+    async def test_close_can_retry_when_the_loop_rejects_cleanup_task(self):
+        class Source:
+            aclose = AsyncMock()
+
+            def __aiter__(self):
+                return numbers()
+
+        source = Source()
+        stream = AsyncStream(source)
+        loop = asyncio.get_running_loop()
+        with patch.object(loop, "create_task", side_effect=RuntimeError("task rejected")):
+            with self.assertRaisesRegex(RuntimeError, "task rejected"):
+                await stream.aclose()
+        source.aclose.assert_not_awaited()
+        await stream.aclose()
+        source.aclose.assert_awaited_once()
 
     async def test_validation_and_unstarted_close_propagates_to_source(self):
         class Source:
