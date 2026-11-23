@@ -1,7 +1,7 @@
-[![Version: Unreleased][version-shield]][changelog]
+[![CI status][ci-shield]][ci]
+[![PyPI version][pypi-shield]][pypi]
 [![Python 3.10+][python-shield]][python]
 [![MIT License][license-shield]][license]
-
 **English** | [Türkçe][readme-tr]
 
 # FlowPipeline
@@ -114,6 +114,8 @@ async def main() -> None:
 asyncio.run(main())
 ~~~
 
+Use `batch(size)` to group by count. Use `batch_within(size, delay)` when a partial batch needs a deadline. Add `buffer(capacity)` when the producer and consumer can benefit from running independently. Buffering adds a queue handoff, which can cost more than it saves for an in-memory source and a fast consumer.
+
 <a id="development"></a>
 
 ## Development and license
@@ -127,11 +129,14 @@ This project is licensed under the [MIT License][license].
 
 ## Related projects
 
-[FlowEvent][repo-flowevent] · [FlowCoord][repo-flowcoord] · [FlowState][repo-flowstate]
+[FlowEvent][repo-flowevent] · [FlowCoord][repo-flowcoord]
 
-[version-shield]: https://img.shields.io/badge/version-unreleased-b7a3e3.svg?style=for-the-badge
+[ci-shield]: https://img.shields.io/github/actions/workflow/status/TahsinCr/python-flowpipeline/ci.yml?branch=main&event=push&label=CI&style=for-the-badge&logo=github&logoColor=white
+[pypi-shield]: https://img.shields.io/pypi/v/flowpipeline?label=PyPI&style=for-the-badge&logo=pypi&logoColor=white
 [python-shield]: https://img.shields.io/badge/Python-3.10%2B-3776AB.svg?style=for-the-badge&logo=python&logoColor=white
 [license-shield]: https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge
+[ci]: https://github.com/TahsinCr/python-flowpipeline/actions/workflows/ci.yml?query=branch%3Amain+event%3Apush
+[pypi]: https://pypi.org/project/flowpipeline/
 [python]: https://www.python.org/downloads/
 [readme-tr]: https://github.com/TahsinCr/python-flowpipeline/blob/main/README-TR.md
 [repository]: https://github.com/TahsinCr/python-flowpipeline
@@ -139,4 +144,3 @@ This project is licensed under the [MIT License][license].
 [license]: https://github.com/TahsinCr/python-flowpipeline/blob/main/LICENSE
 [repo-flowevent]: https://github.com/TahsinCr/python-flowevent
 [repo-flowcoord]: https://github.com/TahsinCr/python-flowcoord
-[repo-flowstate]: https://github.com/TahsinCr/python-flowstate

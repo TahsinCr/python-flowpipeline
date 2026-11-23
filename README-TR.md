@@ -1,12 +1,12 @@
-[![Sürüm: Henüz yayımlanmadı][version-shield]][changelog]
+[![CI durumu][ci-shield]][ci]
+[![PyPI sürümü][pypi-shield]][pypi]
 [![Python 3.10+][python-shield]][python]
 [![MIT Lisansı][license-shield]][license]
-
 [English][readme-en] | **Türkçe**
 
 # FlowPipeline
 
-[Depo][repository] · [Değişiklik günlüğü][changelog] · [MIT Lisansı][license]
+[Repository][repository] · [Changelog][changelog] · [MIT License][license]
 
 Python uygulamaları için birleştirilebilir işleme aşamaları ve asenkron akışlar. Dönüşümleri sıraya koyup senkron veya asenkron çalıştırabilirsiniz.
 
@@ -114,6 +114,8 @@ async def main() -> None:
 asyncio.run(main())
 ~~~
 
+Öğeleri sayıya göre gruplamak için `batch(size)` kullanın. Grubun dolmasını en fazla belirli bir süre beklemek istiyorsanız `batch_within(size, delay)` kullanın. Üretici ile tüketicinin bağımsız ilerlemesi fayda sağlıyorsa `buffer(capacity)` ekleyin. Kaynak bellekteyse ve tüketici hızlıysa kuyruk üzerinden aktarım ek maliyet getirebilir.
+
 <a id="development"></a>
 
 ## Geliştirme ve lisans
@@ -127,11 +129,14 @@ Proje [MIT Lisansı][license] ile yayımlanır.
 
 ## Diğer projeler
 
-[FlowEvent][repo-flowevent] · [FlowCoord][repo-flowcoord] · [FlowState][repo-flowstate]
+[FlowEvent][repo-flowevent] · [FlowCoord][repo-flowcoord]
 
-[version-shield]: https://img.shields.io/badge/version-unreleased-b7a3e3.svg?style=for-the-badge
+[ci-shield]: https://img.shields.io/github/actions/workflow/status/TahsinCr/python-flowpipeline/ci.yml?branch=main&event=push&label=CI&style=for-the-badge&logo=github&logoColor=white
+[pypi-shield]: https://img.shields.io/pypi/v/flowpipeline?label=PyPI&style=for-the-badge&logo=pypi&logoColor=white
 [python-shield]: https://img.shields.io/badge/Python-3.10%2B-3776AB.svg?style=for-the-badge&logo=python&logoColor=white
 [license-shield]: https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge
+[ci]: https://github.com/TahsinCr/python-flowpipeline/actions/workflows/ci.yml?query=branch%3Amain+event%3Apush
+[pypi]: https://pypi.org/project/flowpipeline/
 [python]: https://www.python.org/downloads/
 [readme-en]: https://github.com/TahsinCr/python-flowpipeline/blob/main/README.md
 [repository]: https://github.com/TahsinCr/python-flowpipeline
@@ -139,4 +144,3 @@ Proje [MIT Lisansı][license] ile yayımlanır.
 [license]: https://github.com/TahsinCr/python-flowpipeline/blob/main/LICENSE
 [repo-flowevent]: https://github.com/TahsinCr/python-flowevent
 [repo-flowcoord]: https://github.com/TahsinCr/python-flowcoord
-[repo-flowstate]: https://github.com/TahsinCr/python-flowstate
