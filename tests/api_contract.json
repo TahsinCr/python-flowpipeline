@@ -1,12 +1,58 @@
 {
   "purpose": "Reviewed public API contract for flowpipeline.",
-  "exports": [],
+  "exports": [
+    "AsyncPipeline",
+    "AsyncStream",
+    "ExecutionMetrics",
+    "Pipeline",
+    "PipelineExecutionError",
+    "PipelineObservation",
+    "PipelineObserver",
+    "PipelineStats",
+    "PipelineStatsSnapshot",
+    "__version__"
+  ],
   "signatures": {
     "AsyncStream": {
       "methods": {
-        "batch_within": "(self, max_items: 'int', max_delay: 'float', *, partial: 'bool' = True) -> 'AsyncStream[tuple[T, ...]]'"
+        "map": "(self, callback: 'Callable[[T], U | Awaitable[U]]') -> 'AsyncStream[U]'",
+        "filter": "(self, predicate: 'Callable[[T], bool | Awaitable[bool]]') -> 'AsyncStream[T]'",
+        "batch": "(self, size: 'int', *, partial: 'bool' = True) -> 'AsyncStream[tuple[T, ...]]'",
+        "batch_within": "(self, max_items: 'int', max_delay: 'float', *, partial: 'bool' = True) -> 'AsyncStream[tuple[T, ...]]'",
+        "buffer": "(self, capacity: 'int') -> 'AsyncStream[T]'",
+        "aclose": "(self) -> 'None'"
       },
       "$call": "(source: 'AsyncIterable[T]', *, _upstream: 'AsyncStream[Any] | None' = None) -> 'None'"
+    },
+    "Pipeline": {
+      "methods": {
+        "add": "(self, name: 'str', callback: 'C', *, before: 'str | None' = None, after: 'str | None' = None) -> 'None'",
+        "stage": "(self, name: 'str', *, before: 'str | None' = None, after: 'str | None' = None) -> 'Callable[[C], C]'",
+        "replace": "(self, name: 'str', callback: 'C') -> 'None'",
+        "enable": "(self, name: 'str') -> 'None'",
+        "disable": "(self, name: 'str') -> 'None'",
+        "remove": "(self, name: 'str') -> 'C'",
+        "add_middleware": "(self, name: 'str', callback: 'M', *, before: 'str | None' = None, after: 'str | None' = None) -> 'None'",
+        "middleware": "(self, name: 'str', *, before: 'str | None' = None, after: 'str | None' = None) -> 'Callable[[M], M]'",
+        "replace_middleware": "(self, name: 'str', callback: 'M') -> 'None'",
+        "enable_middleware": "(self, name: 'str') -> 'None'",
+        "disable_middleware": "(self, name: 'str') -> 'None'",
+        "remove_middleware": "(self, name: 'str') -> 'M'",
+        "run": "(self, context: 'T') -> 'T'"
+      },
+      "$call": "(*, observer: 'PipelineObserver | None' = None, correlation_provider: 'Callable[[], str | None] | None' = None) -> 'None'"
+    },
+    "AsyncPipeline": {
+      "methods": {
+        "run": "(self, context: 'T') -> 'T'"
+      },
+      "$call": "(*, observer: 'PipelineObserver | None' = None, correlation_provider: 'Callable[[], str | None] | None' = None) -> 'None'"
+    },
+    "PipelineStats": {
+      "methods": {
+        "reset": "(self) -> 'None'"
+      },
+      "$call": "() -> 'None'"
     }
   }
 }

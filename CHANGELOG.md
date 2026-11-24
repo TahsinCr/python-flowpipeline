@@ -7,6 +7,10 @@
 - Measure Python line and branch coverage and run the test suite with the GIL disabled on Linux.
 - Publish verified release distributions to PyPI with GitHub Actions Trusted Publishing.
 
+### Changed
+
+- Expand the reviewed public API contract.
+
 ### Fixed
 
 - Correct the bilingual guides for stream batching, awaitable checks, and pipeline observers.

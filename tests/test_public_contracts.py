@@ -13,8 +13,8 @@ class PublicContractTests(unittest.TestCase):
         contract = json.loads(
             Path(__file__).with_name("api_contract.json").read_text(encoding="utf-8")
         )
+        self.assertCountEqual(flowpipeline.__all__, contract["exports"])
         for name in contract["exports"]:
-            self.assertIn(name, flowpipeline.__all__)
             self.assertIsNotNone(getattr(flowpipeline, name))
         for name, definition in contract["signatures"].items():
             item = getattr(flowpipeline, name)
