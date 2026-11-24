@@ -27,10 +27,10 @@ Python uygulamaları için birleştirilebilir işleme aşamaları ve asenkron ak
 
 ### Kurulum
 
-Proje kökünde Python 3.10 veya üzeriyle kurun.
+PyPI üzerinden Python 3.10 veya üzeriyle kurun.
 
 ~~~sh
-python -m pip install .
+pip install flowpipeline
 ~~~
 
 ### İsimli aşamaları sırayla çalıştırın

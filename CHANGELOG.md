@@ -9,6 +9,7 @@
 
 ### Changed
 
+- Lead with the PyPI installation command.
 - Expand the reviewed public API contract.
 
 ### Fixed

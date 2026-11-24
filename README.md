@@ -27,10 +27,10 @@ Composable processing stages and async streams for Python applications. Define a
 
 ### Install
 
-Install from the project root with Python 3.10 or later.
+Install from PyPI with Python 3.10 or later.
 
 ~~~sh
-python -m pip install .
+pip install flowpipeline
 ~~~
 
 ### Run named stages in order
