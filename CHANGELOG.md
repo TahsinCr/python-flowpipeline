@@ -4,6 +4,7 @@
 
 ### Added
 
+- Measure Python line and branch coverage and run the test suite with the GIL disabled on Linux.
 - Publish verified release distributions to PyPI with GitHub Actions Trusted Publishing.
 
 ### Fixed
